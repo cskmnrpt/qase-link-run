@@ -1,0 +1,11 @@
+name: 'Qase Run linker'
+runs:
+  using: "composite"
+  steps:
+      - name: Link with Qase
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: '${{ env.QASE_API_BASE_URL }}/apps/external_link/${{ env.QASE_PROJECT_CODE }}/github-app/'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json", "Token":"${{ env.QASE_API_TOKEN }}"}'
+          data: '{"run_id": "${{ env.QASE_RUN_ID }}", "external_run_id": "${{ github.run_id }}"}'
