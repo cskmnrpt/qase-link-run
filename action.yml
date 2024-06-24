@@ -5,7 +5,7 @@ runs:
       - name: Link with Qase
         uses: fjogeleit/http-request-action@v1
         with:
-          url: '${{ env.QASE_API_BASE_URL }}/apps/external_link/${{ env.QASE_PROJECT_CODE }}/github-app/'
+          url: '${{ env.QASE_API_BASE_URL }}/apps/external_link/${{ env.QASE_TESTOPS_PROJECT }}/github-app/'
           method: 'POST'
-          customHeaders: '{"Content-Type": "application/json", "Token":"${{ env.QASE_API_TOKEN }}"}'
-          data: '{"run_id": "${{ env.QASE_RUN_ID }}", "external_run_id": "${{ github.run_id }}"}'
+          customHeaders: '{"Content-Type": "application/json", "Token":"${{ env.QASE_TESTOPS_API_TOKEN }}"}'
+          data: '{"run_id": "${{ env.QASE_TESTOPS_RUN_ID }}", "external_run_id": "${{ github.run_id }}"}'
